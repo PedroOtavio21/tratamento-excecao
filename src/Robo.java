@@ -1,31 +1,31 @@
 public class Robo {
     // Atributos
-    private int coordenadaX;
-    private int coordenadaY;
+    private int x;
+    private int y;
     private String cor;
 
     // Construtor
     public Robo(String cor){
         this.cor = cor;
-        this.coordenadaX = 0;
-        this.coordenadaY = 0;
+        this.x = 0;
+        this.y = 0;
     }
 
     // Getters e Setters
-    public int getCoordenadaX(){
-        return this.coordenadaX;
+    public int getX(){
+        return this.x;
     }
 
-    public void setCoordenadaX(int coordenadaX){
-        this.coordenadaX = coordenadaX;
+    public void setX(int x){
+        this.x = x;
     }
 
-    public int getCoordenadaY(){
-        return this.coordenadaY;
+    public int getY(){
+        return this.y;
     }
 
-    public void setCoordenadaY(int coordenadaY){
-        this.coordenadaY = coordenadaY;
+    public void setY(int y){
+        this.y = y;
     }
 
     public String getCor(){
@@ -34,29 +34,30 @@ public class Robo {
 
     // mover() padrão
     public void mover(String direcao) throws MovimentoInvalidoException{
-        int novoX = this.getCoordenadaX();
-        int novoY = this.getCoordenadaX();
+        int novoX = this.getX();
+        int novoY = this.getY();
         switch (direcao) {
             case "up":
-                novoY++;
+                novoY += 1;
                 break;
             case "down":
-                novoY--;
+                novoY -= 1;
                 break;
             case "right":
-                novoX++;
+                novoX += 1;
                 break;
             case "left":
-                novoX--;
+                novoX -= 1;
                 break;
             default:
                 // Verifica se opção recebe um dos cases acima.
-                throw new IllegalArgumentException("Direção inserida inválida! " + direcao);
+                throw new IllegalArgumentException("Direção aplicada inválida! " + direcao);
         }
         validarMovimento(novoX, novoY);
-        this.setCoordenadaX(novoX);
-        this.setCoordenadaY(novoY);
-        System.out.println("Nova coordenada do robô: (" + this.getCoordenadaX() + "," + this.getCoordenadaY() + ").");
+
+        this.setX(novoX);
+        this.setY(novoY);
+        System.out.println("Nova coordenada do robô: (" + this.getX() + "," + this.getY() + ").");
     }
 
     // mover() string
@@ -77,14 +78,14 @@ public class Robo {
                 break;
             default:
                 // Verifica se opção recebe um dos cases acima.
-                throw new IllegalArgumentException("Opção inserida inválida! " + opcao);
+                throw new IllegalArgumentException("Opção aplicada inválida! " + opcao);
         }
         return direcaoStr;
     }
 
     // encontrouAlimento()
     public boolean encontrouAlimento(Alimento alimento){
-        return this.getCoordenadaX() == alimento.getX() || this.getCoordenadaY() == alimento.getY();
+        return this.getX() == alimento.getX() && this.getY() == alimento.getY();
     }
 
     // validarMovimento -> Exception
