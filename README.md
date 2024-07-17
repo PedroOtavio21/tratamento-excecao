@@ -83,7 +83,7 @@ mexendo.
 - [x] Implementar classes base do jogo (Robô, MovimentoInvalido, "Alimento").
 - [x] Implementar lógica para robô (movimento inteiro, movimento string).
 - [x] Implementar lógica de Exceção em MovimentoInvalidoException.
-- [ ] Implementar o tópico 1.
+- [x] Implementar o tópico 1.
 - [ ] Implementar o tópico 2.
 - [ ] Implementar o tópico 3.
 - [ ] Implementar o tópico 4.

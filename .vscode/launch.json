@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "MainUm",
+            "request": "launch",
+            "mainClass": "MainUm",
+            "projectName": "tratamento-excecao_407665a1"
+        },
+        {
+            "type": "java",
             "name": "Current File",
             "request": "launch",
             "mainClass": "${file}"
