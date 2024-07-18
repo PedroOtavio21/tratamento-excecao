@@ -26,7 +26,7 @@ public class MainUm {
                 scanner.next();
             }
         }
-        // TODO: fazer a lógica setValor() funcionar como esperado.
+        
         if(inputValido){
             Alimento teste = new Alimento(posicaoX, posicaoY, "teste");
             while (!robo.encontrouAlimento(teste)){

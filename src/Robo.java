@@ -38,16 +38,16 @@ public class Robo {
         int novoY = this.getY();
         switch (direcao) {
             case "up":
-                novoY += 1;
+                novoY ++;
                 break;
             case "down":
-                novoY -= 1;
+                novoY --;
                 break;
             case "right":
-                novoX += 1;
+                novoX ++;
                 break;
             case "left":
-                novoX -= 1;
+                novoX --;
                 break;
             default:
                 // Verifica se opção recebe um dos cases acima.
