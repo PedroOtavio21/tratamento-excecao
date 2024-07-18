@@ -2,13 +2,11 @@ public class Alimento {
     // Atributos
     private int x;
     private int y;
-    private String nome;
 
     // Construtor
-    public Alimento(int x, int y, String nome){
+    public Alimento(int x, int y){
         this.x = x;
         this.y = y;
-        this.nome = nome;
     }
     
     // Getters e Setters
@@ -26,10 +24,6 @@ public class Alimento {
 
     public void setY(int y){
         this.y = y;
-    }
-
-    public String getNome(){
-        return this.nome;
     }
 
 }
