@@ -21,14 +21,14 @@ public class MainUm {
                     inputValido = true;
                 }
             } catch (InputMismatchException e){
-                System.out.println("Valor inserido incorreto, insira valores inteiro!");
+                System.out.println("Valor inserido incorreto, insira valores inteiros!");
                 scanner.next();
                 scanner.next();
             }
         }
         
         if(inputValido){
-            Alimento teste = new Alimento(posicaoX, posicaoY, "teste");
+            Alimento teste = new Alimento(posicaoX, posicaoY);
             while (!robo.encontrouAlimento(teste)){
                 System.out.println("Digite o movimento desejado do robô (up, down, right, left)");
                 String movimentoEscolhido = scanner.next();
