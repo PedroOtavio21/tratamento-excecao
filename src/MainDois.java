@@ -1,8 +1,10 @@
 import java.util.InputMismatchException;
+import java.util.Random;
 import java.util.Scanner;
 public class MainDois {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        Random random = new Random();
         Robo roboUm = new Robo("Azul");
         Robo roboDois = new Robo("Verde");
 
@@ -28,11 +30,52 @@ public class MainDois {
             }
         }
 
-        // if(inputValido){
-        //     Alimento alimento = new Alimento(alimentoX, alimentoY);
-        //     while (!roboUm.encontrouAlimento(alimento) || !roboDois.encontrouAlimento(alimento)) {
-                
-        //     }
-        // }
+        if(inputValido){
+            Alimento alimento = new Alimento(alimentoX, alimentoY);
+            int valorRandom1 = 0;
+            int valorRandom2 = 0;
+            String direcao1 = null;
+            String direcao2 = null;
+            int maximoMovimentos = 100;
+            int qntdMovimentos = 0;
+
+            while ((!roboUm.encontrouAlimento(alimento) || !roboDois.encontrouAlimento(alimento)) && qntdMovimentos < maximoMovimentos) {
+                valorRandom1 = random.nextInt(4) + 1;
+                valorRandom2 = random.nextInt(4) + 1;
+
+                direcao1 = roboUm.mover(valorRandom1);
+                direcao2 = roboDois.mover(valorRandom2);
+
+                try {
+                    roboUm.mover(direcao1);
+                } catch(MovimentoInvalidoException e){
+                    System.out.println(e.getMessage());
+                }
+
+                try {
+                    roboDois.mover(direcao2);
+                } catch(MovimentoInvalidoException e){
+                    System.out.println(e.getMessage());
+                }
+
+                qntdMovimentos++;   
+            }
+               
+            if(roboUm.encontrouAlimento(alimento)){
+                System.out.println("O robô " + roboUm.getCor() + " encontrou o alimento!");
+            }
+            if(roboDois.encontrouAlimento(alimento)){
+                System.out.println("O robô " + roboDois.getCor() + " encontrou o alimento!");
+            }
+            
+            System.out.println("Movimentos Válidos de " + roboUm.getCor() + ": " + roboUm.getMovimentoValido());
+            System.out.println("Movimentos Inválidos de " + roboUm.getCor() + ": " + roboUm.getMovimentoInvalido());
+            System.out.println("Movimentos Válidos de " + roboDois.getCor() + ": " + roboDois.getMovimentoValido());
+            System.out.println("Movimentos Inválidos de " + roboDois.getCor() + ": " + roboDois.getMovimentoInvalido());
+
+            System.out.println("Total de movimentos executados: " + qntdMovimentos);
+        }
+
+        scanner.close();
     }
 }

@@ -3,12 +3,16 @@ public class Robo {
     private int x;
     private int y;
     private String cor;
+    private int movimentoValido;
+    private int movimentoInvalido;
 
     // Construtor
     public Robo(String cor){
         this.cor = cor;
         this.x = 0;
         this.y = 0;
+        this.movimentoValido = 0;
+        this.movimentoInvalido = 0;
     }
 
     // Getters e Setters
@@ -32,6 +36,14 @@ public class Robo {
         return this.cor;
     }
 
+    public int getMovimentoValido(){
+        return this.movimentoValido;
+    }
+
+    public int getMovimentoInvalido(){
+        return this.movimentoInvalido;
+    }
+
     // mover() padrão
     public void mover(String direcao) throws MovimentoInvalidoException{
         int novoX = this.getX();
@@ -53,11 +65,16 @@ public class Robo {
                 // Verifica se opção recebe um dos cases acima.
                 throw new IllegalArgumentException("Direção aplicada inválida! " + direcao);
         }
-        validarMovimento(novoX, novoY);
-
-        this.setX(novoX);
-        this.setY(novoY);
-        System.out.println("Nova coordenada do robô: (" + this.getX() + "," + this.getY() + ").");
+        try{
+            validarMovimento(novoX, novoY);
+            this.setX(novoX);
+            this.setY(novoY);
+            movimentoValido++;
+            System.out.println("Nova coordenada do robô: (" + this.getX() + "," + this.getY() + ").");
+        } catch (MovimentoInvalidoException e){
+            movimentoInvalido++;
+            throw e;
+        }
     }
 
     // mover() string
