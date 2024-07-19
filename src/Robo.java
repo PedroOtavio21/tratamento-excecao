@@ -116,7 +116,7 @@ public class Robo {
 
     // validarMovimento -> Exception
     public void validarMovimento(int x, int y) throws MovimentoInvalidoException{
-        if(x < 0 || y < 0){
+        if(x < 0 || y < 0 || x >= 4 || y >= 4){
             throw new MovimentoInvalidoException("Movimento inválido para a posição: (" + x + "," + y + ")!");
         }
     }
