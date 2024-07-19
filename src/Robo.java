@@ -1,10 +1,10 @@
 public class Robo {
     // Atributos
-    private int x;
-    private int y;
-    private String cor;
-    private int movimentoValido;
-    private int movimentoInvalido;
+    protected int x;
+    protected int y;
+    protected String cor;
+    protected int movimentoValido;
+    protected int movimentoInvalido;
 
     // Construtor
     public Robo(String cor){
@@ -44,7 +44,16 @@ public class Robo {
         return this.movimentoInvalido;
     }
 
-    // mover() padrão
+    // Metodos de incremento em atributos
+    public void incrementaMovimentoValido(){
+        this.movimentoValido++;
+    }
+
+    public void incrementaMovimentoInvalido(){
+        this.movimentoInvalido++;
+    }
+
+    // moverPadrao() -> move peca
     public void mover(String direcao) throws MovimentoInvalidoException{
         int novoX = this.getX();
         int novoY = this.getY();
@@ -69,15 +78,15 @@ public class Robo {
             validarMovimento(novoX, novoY);
             this.setX(novoX);
             this.setY(novoY);
-            this.movimentoValido++;
+            incrementaMovimentoValido();
             System.out.println("Nova coordenada do robô " + this.getCor() + ": (" + this.getX() + "," + this.getY() + ").");
         } catch (MovimentoInvalidoException e){
-            this.movimentoInvalido++;
+            incrementaMovimentoInvalido();
             throw e; // Relanca a mesma excecao lancada
         }
     }
 
-    // mover() string
+    // moverString() -> string
     public String mover(int opcao){
         String direcaoStr;
         switch (opcao) {
@@ -100,7 +109,7 @@ public class Robo {
         return direcaoStr;
     }
 
-    // encontrouAlimento()
+    // encontrouAlimento() -> boolean
     public boolean encontrouAlimento(Alimento alimento){
         return this.getX() == alimento.getX() && this.getY() == alimento.getY();
     }
