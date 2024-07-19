@@ -83,10 +83,13 @@ mexendo.
 - [x] Implementar classes base do jogo (Robô, MovimentoInvalido, "Alimento").
 - [x] Implementar lógica para robô (movimento inteiro, movimento string).
 - [x] Implementar lógica de Exceção em MovimentoInvalidoException.
-- [x] Implementar o tópico 1.
-- [ ] Implementar o tópico 2.
-- [ ] Implementar o tópico 3.
-- [ ] Implementar o tópico 4.
+- [x] Implementar lógica para classe filha RoboInteligente.
+- [ ] Implementar lógica de classes Obstaculo, Bomba e Rocha.
+- [ ] Implementar lógica de visualização de movimentos, por meio de uma Matriz (Adicionar em classes Main).
+- [x] Implementar o task 1.
+- [x] Implementar o task 2.
+- [ ] Implementar o task 3.
+- [ ] Implementar o task 4.
 - [ ] Implementar interface gráfica (Swing ou JavaFX).
 
 ## Boas Práticas de Uso do Git para Colaboração
