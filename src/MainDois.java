@@ -3,6 +3,7 @@ import java.util.Random;
 import java.util.Scanner;
 public class MainDois {
     public static void main(String[] args) {
+        // Atributos 
         Scanner scanner = new Scanner(System.in);
         Random random = new Random();
         Robo roboUm = new Robo("Azul");
@@ -12,6 +13,7 @@ public class MainDois {
         int alimentoY = 0; 
         boolean inputValido = false;
 
+        // Verificacao de alimento no plano(xy)
         while(!inputValido){
             try{
                 System.out.println("Insira a posição do alimento, de acordo com a posição no eixo cartesiano (x,y)");
@@ -30,13 +32,15 @@ public class MainDois {
             }
         }
 
+        // Procura de alimento no plano xy
         if(inputValido){
             Alimento alimento = new Alimento(alimentoX, alimentoY);
             int valorRandom1 = 0;
             int valorRandom2 = 0;
             String direcao1 = null;
             String direcao2 = null;
-            int maximoMovimentos = 100;
+            // variaveis de controle para evitar fluxo infinito
+            int maximoMovimentos = 250;
             int qntdMovimentos = 0;
 
             while ((!roboUm.encontrouAlimento(alimento) || !roboDois.encontrouAlimento(alimento)) && qntdMovimentos < maximoMovimentos) {

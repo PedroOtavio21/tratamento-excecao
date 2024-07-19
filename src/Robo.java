@@ -69,11 +69,11 @@ public class Robo {
             validarMovimento(novoX, novoY);
             this.setX(novoX);
             this.setY(novoY);
-            movimentoValido++;
-            System.out.println("Nova coordenada do robô: (" + this.getX() + "," + this.getY() + ").");
+            this.movimentoValido++;
+            System.out.println("Nova coordenada do robô " + this.getCor() + ": (" + this.getX() + "," + this.getY() + ").");
         } catch (MovimentoInvalidoException e){
-            movimentoInvalido++;
-            throw e;
+            this.movimentoInvalido++;
+            throw e; // Relanca a mesma excecao lancada
         }
     }
 
