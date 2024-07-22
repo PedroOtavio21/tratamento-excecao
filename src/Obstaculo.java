@@ -1,17 +1,17 @@
 public abstract class Obstaculo {
     // Atributos
-    protected int id;
+    protected String id;
 
     // Metodos
-    public Obstaculo(int id){
+    public Obstaculo(String id){
         this.id = id;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
