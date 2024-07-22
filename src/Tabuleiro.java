@@ -15,9 +15,10 @@ public class Tabuleiro {
         }
     }
 
-    public void atualizarTabuleiro(Robo robo, String icone){
+    public void atualizarTabuleiro(Robo robo, String icone, Alimento alimento){
         inicializarTabuleiro();
         plano[robo.getX()][robo.getY()] = icone; 
+        adicionarAlimento(alimento);
     }
 
     public void adicionarAlimento(Alimento alimento){
