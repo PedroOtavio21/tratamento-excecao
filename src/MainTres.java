@@ -57,7 +57,7 @@ public class MainTres {
                 // Movimento RoboNormal
                 try {
                     roboNormal.mover(direcao1);
-                    tabuleiro.atualizarTabuleiro(roboNormal, "R1");
+                    tabuleiro.atualizarTabuleiro(roboNormal, "R1", alimento);
                     tabuleiro.mostrarTabuleiro(); 
                 } catch(MovimentoInvalidoException e){
                     System.out.println(e.getMessage());
@@ -66,7 +66,7 @@ public class MainTres {
                 // Movimento RoboInteligente
                 try {
                     roboInteligente.mover(direcao2);
-                    tabuleiro.atualizarTabuleiro(roboInteligente, "R2");
+                    tabuleiro.atualizarTabuleiro(roboInteligente, "R2", alimento);
                     tabuleiro.mostrarTabuleiro(); 
                 } catch(MovimentoInvalidoException e){
                     System.out.println(e.getMessage());
