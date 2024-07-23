@@ -3,17 +3,15 @@ public abstract class Obstaculo {
     protected String id;
 
     // Metodos
-    public Obstaculo(String id){
-        this.id = id;
+    public Obstaculo(int x, int y){
+        // Transforma a posicao do Obstaculo em uma String!
+        this.id = x + "," + y; 
     }
 
     public String getId() {
         return id;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public abstract void bater(Robo robo);
+    // Metodo bater()
+    public abstract void bater(Robo robo, Tabuleiro tabuleiro);
 }
