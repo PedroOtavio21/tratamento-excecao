@@ -9,7 +9,7 @@ public class MainUm {
         int posicaoX = 0;
         int posicaoY = 0;
         boolean inputValido = false;
-        Tabuleiro tabuleiro = new Tabuleiro();
+
         while (!inputValido) {
             try {
                 System.out.println("Insira a posição do alimento, de acordo com a posição no eixo cartesiano (x,y)");
@@ -27,10 +27,13 @@ public class MainUm {
                 scanner.next();
             }
         }
+
         Alimento teste = new Alimento(posicaoX, posicaoY);
+        Tabuleiro tabuleiro = new Tabuleiro();
         tabuleiro.adicionarAlimento(teste);
         tabuleiro.adicionarRobo(robo);
         tabuleiro.mostrarTabuleiro();
+
         if (inputValido) {
             while (!robo.encontrouAlimento(teste)) {
                 System.out.println("Digite o movimento desejado do robô (up, down, right, left)");

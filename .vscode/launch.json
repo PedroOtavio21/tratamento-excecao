@@ -6,12 +6,6 @@
     "configurations": [
         {
             "type": "java",
-<<<<<<< HEAD
-            "name": "MainUm",
-            "request": "launch",
-            "mainClass": "MainUm",
-            "projectName": "tratamento-excecao_b49a9d5c"
-=======
             "name": "MainDois",
             "request": "launch",
             "mainClass": "MainDois",
@@ -30,7 +24,6 @@
             "request": "launch",
             "mainClass": "MainTres",
             "projectName": "tratamento-excecao_36f00a5c"
->>>>>>> origin/victor
         },
         {
             "type": "java",

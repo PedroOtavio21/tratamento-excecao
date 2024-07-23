@@ -51,4 +51,7 @@ public class Tabuleiro {
         System.out.println();
     }
 
+    public void retirarRobo(Robo robo) {
+
+    }
 }

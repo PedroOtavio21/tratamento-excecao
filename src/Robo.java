@@ -9,51 +9,55 @@ public class Robo {
     protected int yAnterior;
     protected boolean explodiu;
 
+    protected String sentido;
+
     // Construtor
-    public Robo(String cor){
+    public Robo(String cor) {
         this.cor = cor;
         this.x = 0;
         this.y = 0;
         this.movimentoValido = 0;
         this.movimentoInvalido = 0;
         this.explodiu = false;
+
+        this.sentido = "direita";
     }
 
     // Getters e Setters
-    public int getX(){
+    public int getX() {
         return this.x;
     }
 
-    public void setX(int x){
+    public void setX(int x) {
         this.x = x;
     }
 
-    public int getY(){
+    public int getY() {
         return this.y;
     }
 
-    public void setY(int y){
+    public void setY(int y) {
         this.y = y;
     }
 
-    public String getCor(){
+    public String getCor() {
         return this.cor;
     }
 
-    public int getMovimentoValido(){
+    public int getMovimentoValido() {
         return this.movimentoValido;
     }
 
-    public int getMovimentoInvalido(){
+    public int getMovimentoInvalido() {
         return this.movimentoInvalido;
     }
 
     // Metodos de incremento em atributos
-    public void incrementaMovimentoValido(){
+    public void incrementaMovimentoValido() {
         this.movimentoValido++;
     }
 
-    public void incrementaMovimentoInvalido(){
+    public void incrementaMovimentoInvalido() {
         this.movimentoInvalido++;
     }
 
@@ -96,35 +100,36 @@ public class Robo {
 
         switch (direcao) {
             case "up":
-                novoY ++;
+                novoX++;
                 break;
             case "down":
-                novoY --;
+                novoX--;
                 break;
             case "right":
-                novoX ++;
+                novoY++;
                 break;
             case "left":
-                novoX --;
+                novoY--;
                 break;
             default:
                 // Verifica se opção recebe um dos cases acima.
                 throw new IllegalArgumentException("Direção aplicada inválida! " + direcao);
         }
-        try{
+        try {
             validarMovimento(novoX, novoY);
             this.setX(novoX);
             this.setY(novoY);
             incrementaMovimentoValido();
-            System.out.println("Nova coordenada do robô " + this.getCor() + ": (" + this.getX() + "," + this.getY() + ").");
-        } catch (MovimentoInvalidoException e){
+            System.out.println(
+                    "Nova coordenada do robô " + this.getCor() + ": (" + this.getX() + "," + this.getY() + ").");
+        } catch (MovimentoInvalidoException e) {
             incrementaMovimentoInvalido();
             throw e; // Relança a mesma exceção capturada
         }
     }
 
     // moverString() -> string
-    public String mover(int opcao){
+    public String mover(int opcao) {
         String direcaoStr;
         switch (opcao) {
             case 1:
@@ -147,7 +152,7 @@ public class Robo {
     }
 
     // encontrouAlimento() -> boolean
-    public boolean encontrouAlimento(Alimento alimento){
+    public boolean encontrouAlimento(Alimento alimento) {
         return this.getX() == alimento.getX() && this.getY() == alimento.getY();
     }
 
@@ -158,8 +163,8 @@ public class Robo {
     }
 
     // validarMovimento -> Exception
-    public void validarMovimento(int x, int y) throws MovimentoInvalidoException{
-        if(x < 0 || y < 0 || x >= 4 || y >= 4){
+    public void validarMovimento(int x, int y) throws MovimentoInvalidoException {
+        if (x < 0 || y < 0 || x >= 4 || y >= 4) {
             throw new MovimentoInvalidoException("Movimento inválido para a posição: (" + x + "," + y + ")!");
         }
     }
