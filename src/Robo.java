@@ -5,6 +5,7 @@ public class Robo {
     protected String cor;
     protected int movimentoValido;
     protected int movimentoInvalido;
+    protected boolean explodiu;
 
     // Construtor
     public Robo(String cor){
@@ -13,6 +14,7 @@ public class Robo {
         this.y = 0;
         this.movimentoValido = 0;
         this.movimentoInvalido = 0;
+        this.explodiu = false;
     }
 
     // Getters e Setters
@@ -53,8 +55,22 @@ public class Robo {
         this.movimentoInvalido++;
     }
 
+    public boolean isExplodiu(){
+        return this.explodiu;
+    }
+
+    public void setExplodiu(boolean explodiu){
+        this.explodiu = explodiu;
+    }
+
     // moverPadrao() -> move peca
     public void mover(String direcao) throws MovimentoInvalidoException{
+        // Verifica se o robô explodiu ou não, impedindo seu movimento no jogo
+        if(this.isExplodiu()){
+            System.out.println("O robô" + this.getCor() + "não poderá se mover pois explodiu!");
+            return;
+        }
+
         int novoX = this.getX();
         int novoY = this.getY();
         switch (direcao) {
@@ -82,7 +98,7 @@ public class Robo {
             System.out.println("Nova coordenada do robô " + this.getCor() + ": (" + this.getX() + "," + this.getY() + ").");
         } catch (MovimentoInvalidoException e){
             incrementaMovimentoInvalido();
-            throw e; // Relanca a mesma excecao lancada
+            throw e; // Relança a mesma exceção capturada
         }
     }
 
