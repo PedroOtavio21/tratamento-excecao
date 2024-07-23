@@ -12,6 +12,11 @@ public abstract class Obstaculo {
         return id;
     }
 
+    public int[] getCoordenadas(){
+        String[] partes = id.split(",");
+        return new int[]{Integer.parseInt(partes[0]), Integer.parseInt(partes[1])};
+    }
+
     // Metodo bater()
     public abstract void bater(Robo robo, Tabuleiro tabuleiro);
 }
