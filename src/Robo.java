@@ -5,6 +5,8 @@ public class Robo {
     protected String cor;
     protected int movimentoValido;
     protected int movimentoInvalido;
+    protected int xAnterior;
+    protected int yAnterior;
     protected boolean explodiu;
 
     // Construtor
@@ -63,6 +65,22 @@ public class Robo {
         this.explodiu = explodiu;
     }
 
+    public int getXAnterior(){
+        return this.xAnterior;
+    }
+
+    public void setXAnterior(int x){
+        this.xAnterior = x;
+    }
+
+    public int getYAnterior(){
+        return this.yAnterior;
+    }
+
+    public void setYAnterior(int y){
+        this.yAnterior = y;
+    }
+
     // moverPadrao() -> move peca
     public void mover(String direcao) throws MovimentoInvalidoException{
         // Verifica se o robô explodiu ou não, impedindo seu movimento no jogo
@@ -71,8 +89,11 @@ public class Robo {
             return;
         }
 
+        this.setXAnterior(this.getX());
+        this.setYAnterior(this.getY());
         int novoX = this.getX();
         int novoY = this.getY();
+
         switch (direcao) {
             case "up":
                 novoY ++;
@@ -128,6 +149,12 @@ public class Robo {
     // encontrouAlimento() -> boolean
     public boolean encontrouAlimento(Alimento alimento){
         return this.getX() == alimento.getX() && this.getY() == alimento.getY();
+    }
+
+    // TODO: Implementar a volta de posicao do robô
+    public void voltarPosicaoAnterior(){
+        this.setX(getXAnterior());
+        this.setY(getYAnterior());
     }
 
     // validarMovimento -> Exception
