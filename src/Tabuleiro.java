@@ -54,4 +54,28 @@ public class Tabuleiro {
     public void retirarRobo(Robo robo) {
 
     }
+
+    public void mostrarTabuleiroRotacionado() {
+        String[][] rotacionado = rotacionarTabuleiro(plano);
+
+        for (int i = 0; i < TAMANHO; i++) {
+            for (int j = 0; j < TAMANHO; j++) {
+                System.out.print(rotacionado[i][j] + " ");
+            }
+            System.out.println();
+        }
+        System.out.println();
+    }
+
+    private String[][] rotacionarTabuleiro(String[][] matriz) {
+        String[][] rotacionado = new String[TAMANHO][TAMANHO];
+
+        for (int i = 0; i < TAMANHO; i++) {
+            for (int j = 0; j < TAMANHO; j++) {
+                rotacionado[i][j] = matriz[j][TAMANHO - 1 - i];
+            }
+        }
+        return rotacionado;
+    }
+
 }

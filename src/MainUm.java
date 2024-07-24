@@ -32,16 +32,18 @@ public class MainUm {
         Tabuleiro tabuleiro = new Tabuleiro();
         tabuleiro.adicionarAlimento(teste);
         tabuleiro.adicionarRobo(robo);
-        tabuleiro.mostrarTabuleiro();
+
+        tabuleiro.mostrarTabuleiroRotacionado();
 
         if (inputValido) {
             while (!robo.encontrouAlimento(teste)) {
                 System.out.println("Digite o movimento desejado do robô (up, down, right, left)");
                 String movimentoEscolhido = scanner.next();
                 try {
+                    // robo.mover(movimentoEscolhido);
                     robo.mover(movimentoEscolhido);
-                    tabuleiro.adicionarRobo(robo);
-                    tabuleiro.mostrarTabuleiro();
+                    tabuleiro.atualizarTabuleiro(robo, "R", teste);
+                    tabuleiro.mostrarTabuleiroRotacionado();
 
                 } catch (MovimentoInvalidoException e) {
                     System.out.println(e.getMessage());
