@@ -4,7 +4,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
-// A classe como um todo serve apenas para testes, não sendo necessária no momento
+// TODO: Implementar JAVAFX qnd preciso
 public class App extends Application {
     @Override
     public void start(Stage primaryStage) {

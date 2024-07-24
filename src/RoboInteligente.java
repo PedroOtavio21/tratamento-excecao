@@ -34,6 +34,7 @@ public class RoboInteligente extends Robo{
             default:
                 throw new IllegalArgumentException("Direção aplicada invállida!");    
         }
+
         try{
             validarMovimento(novoX, novoY);
             this.setX(novoX);
@@ -50,6 +51,7 @@ public class RoboInteligente extends Robo{
             direcao = novoValorAleatorio();
             mover(direcao);
         }
+        
     }
 
     public String novoValorAleatorio(){

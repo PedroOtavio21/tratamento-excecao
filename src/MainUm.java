@@ -11,7 +11,7 @@ public class MainUm {
         boolean inputValido = false;
         int qntdMovimentos = 0;
 
-
+        // Inserção de alimento no plano xy
         while (!inputValido) {
             try {
                 System.out.println("Insira a posição do alimento, de acordo com a posição no eixo cartesiano (x,y)");
@@ -37,6 +37,7 @@ public class MainUm {
 
         tabuleiro.mostrarTabuleiroRotacionado();
 
+        // Loop principal da task1
         if (inputValido) {
             while (!robo.encontrouAlimento(teste)) {
                 System.out.println("Digite o movimento desejado do robô (up, down, right, left)");
@@ -52,6 +53,7 @@ public class MainUm {
                 }
             }
 
+            // Resultado final da task1
             System.out.println("O alimento foi encontrado com sucesso!");
             System.out.println("Quantidade de movimentos realizados: " + qntdMovimentos);
             scanner.close();

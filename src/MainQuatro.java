@@ -32,7 +32,7 @@ public class MainQuatro {
         Robo roboNormal = new Robo("Azul");
         Robo roboInteligente = new RoboInteligente("Verde");
 
-        // Inserção de alimento
+        // Inserção de alimento no plano xy
         while(!inputValidoAlimento){
             try{
                 System.out.println("Insira a posição do alimento, de acordo com a posição no eixo cartesiano (x,y)");

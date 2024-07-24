@@ -15,6 +15,7 @@ public class MainTres {
         int alimentoX = 0;
         int alimentoY = 0;
 
+        // Inserção de alimento no plano xy
         boolean inputValido = false;
         while (!inputValido) {
             try {
@@ -34,13 +35,15 @@ public class MainTres {
             }
         }
 
-        Alimento alimento = new Alimento(alimentoX, alimentoY);
-        tabuleiro.adicionarAlimento(alimento);
 
+        // Loop principal da Task3
         if (inputValido) {
+            Alimento alimento = new Alimento(alimentoX, alimentoY);
+            tabuleiro.adicionarAlimento(alimento);
 
             // variaveis de controle para evitar fluxo infinito
             // int maximoMovimentos = 250;
+
             int qntdMovimentos = 0;
 
             while (!roboNormal.encontrouAlimento(alimento) && !roboInteligente.encontrouAlimento(alimento)) {
@@ -70,11 +73,14 @@ public class MainTres {
                     System.out.println(e.getMessage());
                 }
 
+                // Robo normal Ganhou
                 if (roboNormal.encontrouAlimento(alimento)) {
                     System.out.println("O robô " + roboNormal.getCor() + " encontrou o alimento!");
                     System.out.println("Pressione ENTER para continuar");
                     scanner.nextLine();
                 }
+
+                // Robo Inteligente Ganhou
                 if (roboInteligente.encontrouAlimento(alimento)) {
                     System.out.println("O robô " + roboInteligente.getCor() + " encontrou o alimento!");
                     System.out.println("Pressione ENTER para continuar");
@@ -82,6 +88,7 @@ public class MainTres {
                 }
             }
 
+            // Resultado final da Task3
             System.out.println("Movimentos Válidos de " + roboNormal.getCor() + ": " + roboNormal.getMovimentoValido());
             System.out.println("Movimentos Inválidos de " + roboNormal.getCor() + ": " + roboNormal.getMovimentoInvalido());
             System.out.println("Total de movimentos de " + roboNormal.getCor() + ": " + (roboNormal.getMovimentoValido() + roboNormal.getMovimentoInvalido()));

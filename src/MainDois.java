@@ -36,7 +36,7 @@ public class MainDois {
             }
         }
 
-        // Procura de alimento no plano xy
+        // Execuçãa de lógica de negócio da Task2
         if (inputValido) {
             Alimento alimento = new Alimento(alimentoX, alimentoY);
             tabuleiro1.adicionarAlimento(alimento);
@@ -51,6 +51,7 @@ public class MainDois {
             System.out.println("Tabuleiro inicializado");
             tabuleiro1.mostrarTabuleiroRotacionado();
             tabuleiro2.mostrarTabuleiroRotacionado();
+
             // variaveis de controle para evitar fluxo infinito
             int maximoMovimentos = 250;
             int qntdMovimentos = 0;
@@ -62,18 +63,6 @@ public class MainDois {
 
                 String direcao1 = roboUm.mover(valorRandom1);
                 String direcao2 = roboDois.mover(valorRandom2);
-
-                // try {
-                // roboUm.mover(valorRandom1);
-                // } catch (MovimentoInvalidoException e) {
-                // System.out.println(e.getMessage());
-                // }
-
-                // try {
-                // roboDois.mover(valorRandom2);
-                // } catch (MovimentoInvalidoException e) {
-                // System.out.println(e.getMessage());
-                // }
 
                 try {
                     roboUm.mover(direcao1);
@@ -96,12 +85,14 @@ public class MainDois {
                 tabuleiro2.mostrarTabuleiroRotacionado();
 
                 
-
+                // Robo 1 ganhou
                 if (roboUm.encontrouAlimento(alimento)) {
                     System.out.println("O robô " + roboUm.getCor() + " encontrou o alimento!");
                     System.out.println("Pressione ENTER para continuar");
                     scanner.nextLine();
                 }
+
+                // Robo 2 ganhou
                 if (roboDois.encontrouAlimento(alimento)) {
                     System.out.println("O robô " + roboDois.getCor() + " encontrou o alimento!");
                     System.out.println("Pressione ENTER para continuar");
@@ -110,6 +101,7 @@ public class MainDois {
 
             }
 
+            // Resultado final da Task2
             System.out.println("Movimentos Válidos de " + roboUm.getCor() + ": " + roboUm.getMovimentoValido());
             System.out.println("Movimentos Inválidos de " + roboUm.getCor() + ": " + roboUm.getMovimentoInvalido());
             System.out.println("Total de movimentos de " + roboUm.getCor() + ": " + (roboUm.getMovimentoValido() + roboUm.getMovimentoInvalido()));

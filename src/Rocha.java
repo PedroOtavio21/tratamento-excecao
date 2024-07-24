@@ -3,6 +3,7 @@ public class Rocha extends Obstaculo{
         super(x, y);
     }
 
+    // Não prometo que a lógica esteja correta
     @Override
     public void bater(Robo robo, Tabuleiro tabuleiro) {
         if (robo.getX() == this.getCoordenadas()[0] && robo.getY() == this.getCoordenadas()[1]) {

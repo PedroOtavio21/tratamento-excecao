@@ -52,6 +52,30 @@ public class Robo {
         return this.movimentoInvalido;
     }
 
+    public boolean isExplodiu(){
+        return this.explodiu;
+    }
+    
+    public void setExplodiu(boolean explodiu){
+        this.explodiu = explodiu;
+    }
+    
+    public int getXAnterior(){
+        return this.xAnterior;
+    }
+    
+    public void setXAnterior(int x){
+        this.xAnterior = x;
+    }
+    
+    public int getYAnterior(){
+        return this.yAnterior;
+    }
+    
+    public void setYAnterior(int y){
+        this.yAnterior = y;
+    }
+    
     // Metodos de incremento em atributos
     public void incrementaMovimentoValido() {
         this.movimentoValido++;
@@ -59,30 +83,6 @@ public class Robo {
 
     public void incrementaMovimentoInvalido() {
         this.movimentoInvalido++;
-    }
-
-    public boolean isExplodiu(){
-        return this.explodiu;
-    }
-
-    public void setExplodiu(boolean explodiu){
-        this.explodiu = explodiu;
-    }
-
-    public int getXAnterior(){
-        return this.xAnterior;
-    }
-
-    public void setXAnterior(int x){
-        this.xAnterior = x;
-    }
-
-    public int getYAnterior(){
-        return this.yAnterior;
-    }
-
-    public void setYAnterior(int y){
-        this.yAnterior = y;
     }
 
     // moverPadrao() -> move peca
@@ -115,6 +115,7 @@ public class Robo {
             // Verifica se opção recebe um dos cases acima.
             throw new IllegalArgumentException("Direção aplicada inválida! " + direcao);
         }
+
         try {
             validarMovimento(novoX, novoY);
             this.setX(novoX);
@@ -202,6 +203,7 @@ public class Robo {
         }
         return direcaoStr;
     }
+    
     /*
      * public void incrementarX(int x) {
      * this.x = (this.x + x + TAMANHO) % TAMANHO; // Adiciona TAMANHO para garantir

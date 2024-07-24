@@ -1,4 +1,5 @@
 public class Bomba extends Obstaculo{
+    // Construtor
     public Bomba(int x, int y){
         super(x, y);
     }

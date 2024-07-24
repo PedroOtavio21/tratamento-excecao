@@ -7,6 +7,7 @@ public class Tabuleiro {
         inicializarTabuleiro();
     }
 
+    // Inicializar visualização de tabuleiro
     public void inicializarTabuleiro() {
         for (int i = 0; i < TAMANHO; i++) {
             for (int j = 0; j < TAMANHO; j++) {
@@ -15,12 +16,14 @@ public class Tabuleiro {
         }
     }
 
+    // TODO: Implementar a visualização de Obstáculos em tabuleiro
     public void atualizarTabuleiro(Robo robo, String icone, Alimento alimento){
         inicializarTabuleiro();
         plano[robo.getX()][robo.getY()] = icone; 
         adicionarAlimento(alimento);
     }
 
+    // Adicao de elementos no tabuleiro
     public void adicionarAlimento(Alimento alimento) {
         plano[alimento.getX()][alimento.getY()] = "A";
     }
@@ -45,6 +48,7 @@ public class Tabuleiro {
         plano[robo.getX()][robo.getY()] = ".";
     }
 
+    // Visualização padrao de Tabuleiro -> Matriz
     public void mostrarTabuleiro() {
         for (int i = 0; i < TAMANHO; i++) {
             for (int j = 0; j < TAMANHO; j++) {
@@ -55,6 +59,7 @@ public class Tabuleiro {
         System.out.println();
     }
 
+    // Visualizacao de Tabuleiro -> Plano xy
     public void mostrarTabuleiroRotacionado() {
         String[][] rotacionado = rotacionarTabuleiro(plano);
 
