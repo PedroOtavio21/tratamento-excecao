@@ -84,7 +84,7 @@ mexendo.
 - [x] Implementar lógica para robô (movimento inteiro, movimento string).
 - [x] Implementar lógica de Exceção em MovimentoInvalidoException.
 - [x] Implementar lógica para classe filha RoboInteligente.
-- [ ] Implementar lógica de visualização de movimentos, por meio de uma Matriz (Adicionar em classes Main).
+- [x] Implementar lógica de visualização de movimentos, por meio de uma Matriz (Adicionar em classes Main).
 - [ ] Implementar lógica de classes Obstaculo, Bomba e Rocha.
 - [x] Implementar o task 1.
 - [x] Implementar o task 2.
