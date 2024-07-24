@@ -9,6 +9,8 @@ public class MainUm {
         int posicaoX = 0;
         int posicaoY = 0;
         boolean inputValido = false;
+        int qntdMovimentos = 0;
+
 
         while (!inputValido) {
             try {
@@ -44,13 +46,14 @@ public class MainUm {
                     robo.mover(movimentoEscolhido);
                     tabuleiro.atualizarTabuleiro(robo, "R", teste);
                     tabuleiro.mostrarTabuleiroRotacionado();
-
+                    qntdMovimentos++;
                 } catch (MovimentoInvalidoException e) {
                     System.out.println(e.getMessage());
                 }
             }
 
             System.out.println("O alimento foi encontrado com sucesso!");
+            System.out.println("Quantidade de movimentos realizados: " + qntdMovimentos);
             scanner.close();
         }
     }
