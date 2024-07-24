@@ -1,5 +1,7 @@
 import java.util.Scanner;
+import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Random;
 public class MainQuatro {
     public static void main(String[] args) {
@@ -9,9 +11,16 @@ public class MainQuatro {
         int alimentoX = 0;
         int alimentoY = 0;
 
-        int qntdBombas = 0;
-        int qntdRochas = 0;
-
+        List<Obstaculo> obstaculos = new ArrayList<>();
+        
+        int qntdBombas = 1;
+        int bombaX = 0;
+        int bombaY = 0;
+        
+        
+        int qntdRochas = 1;
+        int rochaX = 0;
+        int rochaY = 0;
 
         boolean inputValidoAlimento = false;
         boolean inputValidoBomba = false;
@@ -38,12 +47,64 @@ public class MainQuatro {
                 scanner.next();
                 scanner.next();
             }
-            // TODO: Implementar a leitura e posicionamento de Bombas e Obstaculos
+        }
+        
+        // TODO: Implementar a leitura e posicionamento de Bombas e Obstaculos
+        while(!inputValidoBomba && !inputValidoRocha){
+            if(qntdBombas > 0){
+                try{
+                    for(int i = 0; i < qntdBombas; i++){
+                        System.out.println("Insira as coordenadas da bomba " + (i + 1));
+                        bombaX = scanner.nextInt();
+                        bombaY = scanner.nextInt();
+                        if(bombaX < 0 || bombaX >= 4 || bombaY < 0 || bombaY >= 4){
+                            System.out.println("As coordenadas da bomba devem ser entre 0 e 3");
+                            scanner.nextLine();
+                        } else {
+                            obstaculos.add(new Bomba(bombaX, bombaY));
+                            inputValidoBomba = true;
+                        }
+                    }
+                } catch(InputMismatchException e){
+                    System.out.println("Valor inserido incorreto, insira valores inteiros!");
+                    scanner.next();
+                    scanner.next();
+                }
+            } else {
+                System.out.println("Não há bombas a serem inseridas no jogo.");
+                inputValidoBomba = true;
+            }
+
+
+            if(qntdRochas > 0){
+                try{
+                    for(int i = 0; i < qntdRochas; i++){
+                        System.out.println("Insira as coordenadas da rocha " + (i + 1));
+                        rochaX = scanner.nextInt();
+                        rochaY = scanner.nextInt();
+                        if(rochaX < 0 || rochaX >= 4 || rochaY < 0 || rochaY >= 4){
+                            System.out.println("As coordenadas da rocha devem ser entre 0 e 3");
+                            scanner.nextLine();
+                        } else {
+                            obstaculos.add(new Rocha(rochaX, rochaY));
+                            inputValidoRocha = true;
+                        }
+                    }
+                } catch (InputMismatchException e){
+                    System.out.println("Valor inserido incorreto, insira valores inteiros!");
+                    scanner.next();
+                    scanner.next();
+                }
+            } else {
+                System.out.println("Não há rochas a serem inseridas no jogo.");
+                inputValidoRocha = true;
+            }
         }
 
-        if (inputValidoAlimento) {
+        if (inputValidoAlimento && inputValidoBomba && inputValidoRocha) {
            Alimento alimento = new Alimento(alimentoX, alimentoY);
            tabuleiro.adicionarAlimento(alimento); 
+           System.out.println("Quantidade de Obstaculos criados: " + obstaculos.size());
         }
     }
 }
