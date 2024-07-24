@@ -50,8 +50,8 @@ public class MainTres {
                 int valorRandom1 = random.nextInt(4) + 1;
                 int valorRandom2 = random.nextInt(4) + 1;
 
-                roboNormal.mover(valorRandom1);
-                roboInteligente.mover(valorRandom2);
+                direcao1 = roboNormal.mover(valorRandom1);
+                direcao2 = roboInteligente.mover(valorRandom2);
 
                 // Movimento RoboNormal
                 try {
