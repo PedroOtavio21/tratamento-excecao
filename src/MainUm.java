@@ -15,8 +15,8 @@ public class MainUm {
                 System.out.println("Insira a posição do alimento, de acordo com a posição no eixo cartesiano (x,y)");
                 posicaoX = scanner.nextInt();
                 posicaoY = scanner.nextInt();
-                if (posicaoX < 0 || posicaoY < 0) {
-                    System.out.println("As coordenadas do alimento não podem ser menores que 0!");
+                if (posicaoX < 0 || posicaoY < 0 || posicaoX >= 4 || posicaoY >= 4) {
+                    System.out.println("As coordenadas do alimento devem ser entre 0 e 3");
                     scanner.nextLine();
                 } else {
                     inputValido = true;
