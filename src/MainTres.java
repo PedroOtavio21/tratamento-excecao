@@ -39,46 +39,47 @@ public class MainTres {
 
         if (inputValido) {
 
-            String direcao1 = null;
-            String direcao2 = null;
-
             // variaveis de controle para evitar fluxo infinito
             // int maximoMovimentos = 250;
             int qntdMovimentos = 0;
 
-            while (!roboNormal.encontrouAlimento(alimento) || !roboInteligente.encontrouAlimento(alimento)) {
+            while (!roboNormal.encontrouAlimento(alimento) && !roboInteligente.encontrouAlimento(alimento)) {
                 int valorRandom1 = random.nextInt(4) + 1;
                 int valorRandom2 = random.nextInt(4) + 1;
 
-                direcao1 = roboNormal.mover(valorRandom1);
-                direcao2 = roboInteligente.mover(valorRandom2);
+                String direcao1 = roboNormal.mover(valorRandom1);
+                String direcao2 = roboInteligente.mover(valorRandom2);
 
                 // Movimento RoboNormal
                 try {
                     roboNormal.mover(direcao1);
-                    tabuleiro.atualizarTabuleiro(roboNormal, "R1", alimento);
-                    tabuleiro.mostrarTabuleiro(); 
-                } catch(MovimentoInvalidoException e){
+                    tabuleiro.atualizarTabuleiro(roboNormal, "RN", alimento);
+                    tabuleiro.mostrarTabuleiroRotacionado();
+                } catch (MovimentoInvalidoException e) {
                     System.out.println(e.getMessage());
                 }
 
                 // Movimento RoboInteligente
                 try {
                     roboInteligente.mover(direcao2);
-                    tabuleiro.atualizarTabuleiro(roboInteligente, "R2", alimento);
-                    tabuleiro.mostrarTabuleiro(); 
-                } catch(MovimentoInvalidoException e){
+                    tabuleiro.atualizarTabuleiro(roboInteligente, "RI", alimento);
+                    tabuleiro.mostrarTabuleiroRotacionado();
+                } catch (MovimentoInvalidoException e) {
                     System.out.println(e.getMessage());
                 }
 
                 qntdMovimentos++;
-            }
 
-            if (roboNormal.encontrouAlimento(alimento)) {
-                System.out.println("O robô " + roboNormal.getCor() + " encontrou o alimento!");
-            }
-            if (roboInteligente.encontrouAlimento(alimento)) {
-                System.out.println("O robô " + roboInteligente.getCor() + " encontrou o alimento!");
+                if (roboNormal.encontrouAlimento(alimento)) {
+                    System.out.println("O robô " + roboNormal.getCor() + " encontrou o alimento!");
+                    System.out.println("Pressione ENTER para continuar");
+                    scanner.nextLine();
+                }
+                if (roboInteligente.encontrouAlimento(alimento)) {
+                    System.out.println("O robô " + roboInteligente.getCor() + " encontrou o alimento!");
+                    System.out.println("Pressione ENTER para continuar");
+                    scanner.nextLine();
+                }
             }
 
             System.out.println("Movimentos Válidos de " + roboNormal.getCor() + ": " + roboNormal.getMovimentoValido());

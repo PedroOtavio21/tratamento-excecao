@@ -55,33 +55,32 @@ public class MainDois {
             int maximoMovimentos = 250;
             int qntdMovimentos = 0;
 
-            while ((!roboUm.encontrouAlimento(alimento) || !roboDois.encontrouAlimento(alimento))
+            while ((!roboUm.encontrouAlimento(alimento) && !roboDois.encontrouAlimento(alimento))
                     && qntdMovimentos < maximoMovimentos) {
                 int valorRandom1 = random.nextInt(4) + 1;
                 int valorRandom2 = random.nextInt(4) + 1;
-                
+
                 String direcao1 = roboUm.mover(valorRandom1);
                 String direcao2 = roboDois.mover(valorRandom2);
-                
+
                 // try {
-                //     roboUm.mover(valorRandom1);
+                // roboUm.mover(valorRandom1);
                 // } catch (MovimentoInvalidoException e) {
-                //     System.out.println(e.getMessage());
+                // System.out.println(e.getMessage());
                 // }
 
                 // try {
-                //     roboDois.mover(valorRandom2);
+                // roboDois.mover(valorRandom2);
                 // } catch (MovimentoInvalidoException e) {
-                //     System.out.println(e.getMessage());
+                // System.out.println(e.getMessage());
                 // }
 
-                
                 try {
                     roboUm.mover(direcao1);
                 } catch (MovimentoInvalidoException e) {
                     System.out.println(e.getMessage());
                 }
-                 
+
                 try {
                     roboDois.mover(direcao2);
                 } catch (MovimentoInvalidoException e) {
@@ -96,13 +95,17 @@ public class MainDois {
 
                 qntdMovimentos++;
 
-            }
+                if (roboUm.encontrouAlimento(alimento)) {
+                    System.out.println("O robô " + roboUm.getCor() + " encontrou o alimento!");
+                    System.out.println("Pressione ENTER para continuar");
+                    scanner.nextLine();
+                }
+                if (roboDois.encontrouAlimento(alimento)) {
+                    System.out.println("O robô " + roboDois.getCor() + " encontrou o alimento!");
+                    System.out.println("Pressione ENTER para continuar");
+                    scanner.nextLine();
+                }
 
-            if (roboUm.encontrouAlimento(alimento)) {
-                System.out.println("O robô " + roboUm.getCor() + " encontrou o alimento!");
-            }
-            if (roboDois.encontrouAlimento(alimento)) {
-                System.out.println("O robô " + roboDois.getCor() + " encontrou o alimento!");
             }
 
             System.out.println("Movimentos Válidos de " + roboUm.getCor() + ": " + roboUm.getMovimentoValido());

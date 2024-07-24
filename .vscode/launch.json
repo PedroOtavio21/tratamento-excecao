@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "MainDois",
+            "request": "launch",
+            "mainClass": "MainDois",
+            "projectName": "tratamento-excecao_95f60fcf"
+        },
+        {
+            "type": "java",
+            "name": "MainTres",
+            "request": "launch",
+            "mainClass": "MainTres",
+            "projectName": "tratamento-excecao_95f60fcf"
+        },
+        {
+            "type": "java",
             "name": "MainQuatro",
             "request": "launch",
             "mainClass": "MainQuatro",
