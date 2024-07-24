@@ -106,6 +106,12 @@ public class MainQuatro {
            Alimento alimento = new Alimento(alimentoX, alimentoY);
            tabuleiro.adicionarAlimento(alimento); 
            System.out.println("Quantidade de Obstaculos criados: " + obstaculos.size());
+           
+           for(Obstaculo o : obstaculos){
+            tabuleiro.adicionarObstaculo(o);
+           }
+
+           
         }
     }
 }
