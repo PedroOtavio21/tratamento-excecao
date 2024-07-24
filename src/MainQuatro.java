@@ -13,8 +13,6 @@ public class MainQuatro {
         int alimentoY = 0;
 
         List<Obstaculo> obstaculos = new ArrayList<>();
-        
-        int qntdMovimentos = 0;
 
         int qntdBombas = 1;
         int bombaX = 0;
