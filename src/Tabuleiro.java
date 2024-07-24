@@ -41,6 +41,10 @@ public class Tabuleiro {
         }
     }
 
+    public void retirarRobo(Robo robo){
+        plano[robo.getX()][robo.getY()] = ".";
+    }
+
     public void mostrarTabuleiro() {
         for (int i = 0; i < TAMANHO; i++) {
             for (int j = 0; j < TAMANHO; j++) {

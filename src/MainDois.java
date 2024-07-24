@@ -77,12 +77,14 @@ public class MainDois {
 
                 try {
                     roboUm.mover(direcao1);
+                    qntdMovimentos++;
                 } catch (MovimentoInvalidoException e) {
                     System.out.println(e.getMessage());
                 }
 
                 try {
                     roboDois.mover(direcao2);
+                    qntdMovimentos++;
                 } catch (MovimentoInvalidoException e) {
                     System.out.println(e.getMessage());
                 }
@@ -93,7 +95,7 @@ public class MainDois {
                 tabuleiro1.mostrarTabuleiroRotacionado();
                 tabuleiro2.mostrarTabuleiroRotacionado();
 
-                qntdMovimentos++;
+                
 
                 if (roboUm.encontrouAlimento(alimento)) {
                     System.out.println("O robô " + roboUm.getCor() + " encontrou o alimento!");
@@ -110,9 +112,12 @@ public class MainDois {
 
             System.out.println("Movimentos Válidos de " + roboUm.getCor() + ": " + roboUm.getMovimentoValido());
             System.out.println("Movimentos Inválidos de " + roboUm.getCor() + ": " + roboUm.getMovimentoInvalido());
+            System.out.println("Total de movimentos de " + roboUm.getCor() + ": " + (roboUm.getMovimentoValido() + roboUm.getMovimentoInvalido()));
+            System.out.println();
             System.out.println("Movimentos Válidos de " + roboDois.getCor() + ": " + roboDois.getMovimentoValido());
             System.out.println("Movimentos Inválidos de " + roboDois.getCor() + ": " + roboDois.getMovimentoInvalido());
-
+            System.out.println("Total de movimentos de " + roboDois.getCor() + ": " + (roboDois.getMovimentoValido() + roboDois.getMovimentoInvalido()));
+            System.out.println();
             System.out.println("Total de movimentos executados: " + qntdMovimentos);
         }
 
