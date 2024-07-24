@@ -5,6 +5,23 @@ Projeto destinado à segunda nota de trabalho do npc1, pela disciplina de POO na
 - Pedro Otávio
 - Victor Farias
 
+## Sobre
+O projeto consiste em treinar os conhecimentos adquiridos pelos alunos na cadeira de Programação Orientada a Objetos com Java: Pilares de OO e Tratamento de Exceção. 
+
+A elaboração de classes e métodos foi realizada de acordo com o andamento do projeto e a ordem de execução das chamadas "Tasks" pelos alunos, indicadas por um número na descrição do jogo. 
+
+O projeto foi distribuído nas seguintes classes:
+- MovimentoInvalidoException
+- Robo
+- RoboInteligente
+- Alimento
+- Tabuleiro
+- Obstaculo
+- Rocha
+- Bomba
+- Classes Main numeradas de 1 à 4 
+- App (Execução de possível Interface em JavaFX)
+
 ## Descrição do Projeto
 Existe uma linguagem de programação chamada Logo que é muito usada no Brasil em
 escolas de primeiro e segundo grau. Nesta linguagem você pode programar os
@@ -88,7 +105,7 @@ mexendo.
 - [ ] Implementar lógica de classes Obstaculo, Bomba e Rocha.
 - [x] Implementar o task 1.
 - [x] Implementar o task 2.
-- [ ] Implementar o task 3.
+- [x] Implementar o task 3.
 - [ ] Implementar o task 4.
 - [ ] Implementar interface gráfica (Swing ou JavaFX).
 
