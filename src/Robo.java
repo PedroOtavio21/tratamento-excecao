@@ -100,16 +100,16 @@ public class Robo {
 
         switch (direcao) {
             case "up":
-                novoX++;
-                break;
-            case "down":
-                novoX--;
-                break;
-            case "right":
                 novoY++;
                 break;
-            case "left":
+            case "down":
                 novoY--;
+                break;
+            case "right":
+                novoX++;
+                break;
+            case "left":
+                novoX--;
                 break;
             default:
                 // Verifica se opção recebe um dos cases acima.
