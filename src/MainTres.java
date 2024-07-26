@@ -10,7 +10,8 @@ public class MainTres {
         Robo roboNormal = new Robo("Azul");
         Robo roboInteligente = new RoboInteligente("Verde");
 
-        Tabuleiro tabuleiro = new Tabuleiro();
+        Tabuleiro tabuleiro1 = new Tabuleiro();
+        Tabuleiro tabuleiro2 = new Tabuleiro();
 
         int alimentoX = 0;
         int alimentoY = 0;
@@ -39,12 +40,22 @@ public class MainTres {
         // Loop principal da Task3
         if (inputValido) {
             Alimento alimento = new Alimento(alimentoX, alimentoY);
-            tabuleiro.adicionarAlimento(alimento);
+            tabuleiro1.adicionarAlimento(alimento);
+            tabuleiro2.adicionarAlimento(alimento);
+
+            tabuleiro1.adicionarRobo(roboNormal);
+            tabuleiro2.adicionarRobo(roboInteligente);
+
+            tabuleiro1.atualizarTabuleiro(roboNormal, "RN", alimento);
+            tabuleiro2.atualizarTabuleiro(roboInteligente, "RI", alimento);
+
+            System.out.println("Tabuleiro inicializado!");
+            tabuleiro1.mostrarTabuleiroRotacionado();
+            tabuleiro2.mostrarTabuleiroRotacionado();
 
             // variaveis de controle para evitar fluxo infinito
             // int maximoMovimentos = 250;
 
-            int qntdMovimentos = 0;
 
             while (!roboNormal.encontrouAlimento(alimento) && !roboInteligente.encontrouAlimento(alimento)) {
                 int valorRandom1 = random.nextInt(4) + 1;
@@ -56,26 +67,28 @@ public class MainTres {
                 // Movimento RoboNormal
                 try {
                     roboNormal.mover(direcao1);
-                    tabuleiro.atualizarTabuleiro(roboNormal, "RN", alimento);
-                    tabuleiro.mostrarTabuleiroRotacionado();
-                    qntdMovimentos++;
+                    tabuleiro1.atualizarTabuleiro(roboNormal, "RN", alimento);
+                    tabuleiro1.mostrarTabuleiroRotacionado();
                 } catch (MovimentoInvalidoException e) {
                     System.out.println(e.getMessage());
+                    tabuleiro1.mostrarTabuleiroRotacionado();
                 }
 
                 // Movimento RoboInteligente
                 try {
                     roboInteligente.mover(direcao2);
-                    tabuleiro.atualizarTabuleiro(roboInteligente, "RI", alimento);
-                    tabuleiro.mostrarTabuleiroRotacionado();
-                    qntdMovimentos++;
+                    tabuleiro2.atualizarTabuleiro(roboInteligente, "RI", alimento);
+                    tabuleiro2.mostrarTabuleiroRotacionado();
                 } catch (MovimentoInvalidoException e) {
                     System.out.println(e.getMessage());
+                    tabuleiro2.mostrarTabuleiroRotacionado();
                 }
 
                 // Robo normal Ganhou
                 if (roboNormal.encontrouAlimento(alimento)) {
                     System.out.println("O robô " + roboNormal.getCor() + " encontrou o alimento!");
+                    tabuleiro1.adicionarAlimentoEncontrado(alimento);
+                    tabuleiro1.mostrarTabuleiroRotacionado();
                     System.out.println("Pressione ENTER para continuar");
                     scanner.nextLine();
                 }
@@ -83,6 +96,8 @@ public class MainTres {
                 // Robo Inteligente Ganhou
                 if (roboInteligente.encontrouAlimento(alimento)) {
                     System.out.println("O robô " + roboInteligente.getCor() + " encontrou o alimento!");
+                    tabuleiro2.adicionarAlimentoEncontrado(alimento);
+                    tabuleiro2.mostrarTabuleiroRotacionado();
                     System.out.println("Pressione ENTER para continuar");
                     scanner.nextLine();
                 }
@@ -97,7 +112,6 @@ public class MainTres {
             System.out.println("Movimentos Inválidos de " + roboInteligente.getCor() + ": " + roboInteligente.getMovimentoInvalido());
             System.out.println("Total de movimentos de " + roboInteligente.getCor() + ": " + (roboInteligente.getMovimentoValido() + roboInteligente.getMovimentoInvalido()));
             System.out.println();
-            System.out.println("Total de movimentos executados: " + qntdMovimentos);
         }
 
         scanner.close();

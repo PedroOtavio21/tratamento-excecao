@@ -7,6 +7,7 @@ public class MainDois {
         // Atributos
         Scanner scanner = new Scanner(System.in);
         Random random = new Random();
+
         Robo roboUm = new Robo("Azul");
         Robo roboDois = new Robo("Verde");
 
@@ -53,11 +54,9 @@ public class MainDois {
             tabuleiro2.mostrarTabuleiroRotacionado();
 
             // variaveis de controle para evitar fluxo infinito
-            int maximoMovimentos = 250;
-            int qntdMovimentos = 0;
+            // int maximoMovimentos = 250;
 
-            while ((!roboUm.encontrouAlimento(alimento) && !roboDois.encontrouAlimento(alimento))
-                    && qntdMovimentos < maximoMovimentos) {
+            while (!roboUm.encontrouAlimento(alimento) && !roboDois.encontrouAlimento(alimento)) {
                 int valorRandom1 = random.nextInt(4) + 1;
                 int valorRandom2 = random.nextInt(4) + 1;
 
@@ -66,28 +65,28 @@ public class MainDois {
 
                 try {
                     roboUm.mover(direcao1);
-                    qntdMovimentos++;
+                    tabuleiro1.atualizarTabuleiro(roboUm, "R1", alimento);
+                    tabuleiro1.mostrarTabuleiroRotacionado();
                 } catch (MovimentoInvalidoException e) {
                     System.out.println(e.getMessage());
+                    tabuleiro1.mostrarTabuleiroRotacionado();
                 }
 
                 try {
                     roboDois.mover(direcao2);
-                    qntdMovimentos++;
+                    tabuleiro2.atualizarTabuleiro(roboDois, "R2", alimento);
+                    tabuleiro2.mostrarTabuleiroRotacionado();
                 } catch (MovimentoInvalidoException e) {
                     System.out.println(e.getMessage());
+                    tabuleiro2.mostrarTabuleiroRotacionado();
                 }
 
-                tabuleiro1.atualizarTabuleiro(roboUm, "R1", alimento);
-                tabuleiro2.atualizarTabuleiro(roboDois, "R2", alimento);
 
-                tabuleiro1.mostrarTabuleiroRotacionado();
-                tabuleiro2.mostrarTabuleiroRotacionado();
-
-                
                 // Robo 1 ganhou
                 if (roboUm.encontrouAlimento(alimento)) {
                     System.out.println("O robô " + roboUm.getCor() + " encontrou o alimento!");
+                    tabuleiro1.adicionarAlimentoEncontrado(alimento);
+                    tabuleiro1.mostrarTabuleiroRotacionado();
                     System.out.println("Pressione ENTER para continuar");
                     scanner.nextLine();
                 }
@@ -95,6 +94,8 @@ public class MainDois {
                 // Robo 2 ganhou
                 if (roboDois.encontrouAlimento(alimento)) {
                     System.out.println("O robô " + roboDois.getCor() + " encontrou o alimento!");
+                    tabuleiro2.adicionarAlimentoEncontrado(alimento);
+                    tabuleiro2.mostrarTabuleiroRotacionado();
                     System.out.println("Pressione ENTER para continuar");
                     scanner.nextLine();
                 }
@@ -110,7 +111,6 @@ public class MainDois {
             System.out.println("Movimentos Inválidos de " + roboDois.getCor() + ": " + roboDois.getMovimentoInvalido());
             System.out.println("Total de movimentos de " + roboDois.getCor() + ": " + (roboDois.getMovimentoValido() + roboDois.getMovimentoInvalido()));
             System.out.println();
-            System.out.println("Total de movimentos executados: " + qntdMovimentos);
         }
 
         scanner.close();

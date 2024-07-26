@@ -9,6 +9,7 @@ public class RoboInteligente extends Robo{
     // Sobrescrita de Metodo mover para realizar novos movimentos apos excecao
     @Override
     public void mover(String direcao) throws MovimentoInvalidoException{
+        // Retorna se o robô explodiu ou não
         if(this.isExplodiu()){
             System.out.println("O robô" + this.getCor() + "não poderá se mover pois explodiu!");
             return;
@@ -44,10 +45,10 @@ public class RoboInteligente extends Robo{
         } catch (MovimentoInvalidoException e){
             incrementaMovimentoInvalido();
             // Início de um novo movimento a partir do disparo da excecao
-            this.setXAnterior(this.getX());
-            this.setYAnterior(this.getY());
-            novoX = this.getX();
-            novoY = this.getY();
+            // this.setXAnterior(this.getX());
+            // this.setYAnterior(this.getY());
+            // novoX = this.getX();
+            // novoY = this.getY();
             direcao = novoValorAleatorio();
             mover(direcao);
         }

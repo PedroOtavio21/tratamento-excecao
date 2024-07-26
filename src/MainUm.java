@@ -40,9 +40,9 @@ public class MainUm {
         // Loop principal da task1
         if (inputValido) {
             while (!robo.encontrouAlimento(teste)) {
-                System.out.println("Digite o movimento desejado do robô (up, down, right, left)");
-                String movimentoEscolhido = scanner.next();
                 try {
+                    System.out.println("Digite o movimento desejado do robô (up, down, right, left)");
+                    String movimentoEscolhido = scanner.next();
                     // robo.mover(movimentoEscolhido);
                     robo.mover(movimentoEscolhido);
                     tabuleiro.atualizarTabuleiro(robo, "R", teste);
@@ -50,11 +50,19 @@ public class MainUm {
                     qntdMovimentos++;
                 } catch (MovimentoInvalidoException e) {
                     System.out.println(e.getMessage());
+                    tabuleiro.mostrarTabuleiroRotacionado();
+                } catch (IllegalArgumentException e){
+                    System.out.println("Valor inserido incorreto! escolha uma das opções: (up, down, right, left)");
+                }
+
+                if(robo.encontrouAlimento(teste)){
+                    System.out.println("O robô " + robo.getCor() + " encontrou o alimento com sucesso!");
+                    tabuleiro.adicionarAlimentoEncontrado(teste);
+                    tabuleiro.mostrarTabuleiroRotacionado();
                 }
             }
 
             // Resultado final da task1
-            System.out.println("O alimento foi encontrado com sucesso!");
             System.out.println("Quantidade de movimentos realizados: " + qntdMovimentos);
             scanner.close();
         }

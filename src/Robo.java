@@ -87,7 +87,7 @@ public class Robo {
 
     // moverPadrao() -> move peca
     public void mover(String direcao) throws MovimentoInvalidoException{
-        // Verifica se o robô explodiu ou não, impedindo seu movimento no jogo
+        // Retorna se o robô explodiu ou não, impedindo seu movimento no jogo
         if(this.isExplodiu()){
             System.out.println("O robô" + this.getCor() + "não poderá se mover pois explodiu!");
             return;
@@ -281,7 +281,7 @@ public class Robo {
     // validarMovimento -> Exception
     public void validarMovimento(int x, int y) throws MovimentoInvalidoException {
         if (x < 0 || y < 0 || x >= 4 || y >= 4) {
-            throw new MovimentoInvalidoException("Movimento inválido para a posição: (" + x + "," + y + ")!");
+            throw new MovimentoInvalidoException("Movimento inválido do robô " + this.getCor() + " para a posição: (" + x + "," + y + ")!");
         }
 
     }
