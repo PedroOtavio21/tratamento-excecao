@@ -28,6 +28,10 @@ public class Tabuleiro {
         plano[alimento.getX()][alimento.getY()] = "A";
     }
 
+    public void adicionarAlimentoEncontrado(Alimento alimento){
+        plano[alimento.getX()][alimento.getY()] = "X";
+    }
+
     public void adicionarRobo(Robo robo) {
         plano[robo.getX()][robo.getY()] = "R";
     }
