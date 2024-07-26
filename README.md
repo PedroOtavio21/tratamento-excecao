@@ -23,6 +23,8 @@ O projeto foi distribuído nas seguintes classes:
 - App (Execução de possível Interface em JavaFX)
 
 ## Descrição do Projeto
+Segue abaixo o texto disponibilizado para a elaboração do projeto: 
+
 Existe uma linguagem de programação chamada Logo que é muito usada no Brasil em
 escolas de primeiro e segundo grau. Nesta linguagem você pode programar os
 movimentos na tela de um personagem, como uma tartaruga. Este personagem descreve
@@ -107,6 +109,7 @@ mexendo.
 - [x] Implementar o task 2.
 - [x] Implementar o task 3.
 - [ ] Implementar o task 4.
+- [ ] Realizar uma verificação de tratamento de erro ao decorrer do código.
 - [ ] Implementar interface gráfica (Swing ou JavaFX).
 
 ## Boas Práticas de Uso do Git para Colaboração
