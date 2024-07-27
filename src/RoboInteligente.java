@@ -44,11 +44,6 @@ public class RoboInteligente extends Robo{
             System.out.println("Nova coordenada do robô " + this.getCor() + ": (" + this.getX() + "," + this.getY() + ").");
         } catch (MovimentoInvalidoException e){
             incrementaMovimentoInvalido();
-            // Início de um novo movimento a partir do disparo da excecao
-            // this.setXAnterior(this.getX());
-            // this.setYAnterior(this.getY());
-            // novoX = this.getX();
-            // novoY = this.getY();
             direcao = novoValorAleatorio();
             mover(direcao);
         }

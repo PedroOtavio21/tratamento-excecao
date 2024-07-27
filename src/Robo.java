@@ -19,8 +19,6 @@ public class Robo {
         this.movimentoValido = 0;
         this.movimentoInvalido = 0;
         this.explodiu = false;
-
-        this.sentido = "direita";
     }
 
     // Getters e Setters
@@ -52,14 +50,6 @@ public class Robo {
         return this.movimentoInvalido;
     }
 
-    public boolean isExplodiu(){
-        return this.explodiu;
-    }
-    
-    public void setExplodiu(boolean explodiu){
-        this.explodiu = explodiu;
-    }
-    
     public int getXAnterior(){
         return this.xAnterior;
     }
@@ -76,6 +66,13 @@ public class Robo {
         this.yAnterior = y;
     }
     
+    public boolean isExplodiu(){
+        return this.explodiu;
+    }
+    
+    public void setExplodiu(boolean explodiu){
+        this.explodiu = explodiu;
+    }
     // Metodos de incremento em atributos
     public void incrementaMovimentoValido() {
         this.movimentoValido++;

@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class MainUm {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        Robo robo = new Robo("Azul");
+        Robo robo = new Robo("Branco");
 
         int posicaoX = 0;
         int posicaoY = 0;

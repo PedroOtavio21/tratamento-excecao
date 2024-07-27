@@ -7,7 +7,7 @@ public class MainTres {
         Random random = new Random();
         Scanner scanner = new Scanner(System.in);
 
-        Robo roboNormal = new Robo("Azul");
+        Robo roboNormal = new Robo("Branco");
         Robo roboInteligente = new RoboInteligente("Verde");
 
         Tabuleiro tabuleiro1 = new Tabuleiro();

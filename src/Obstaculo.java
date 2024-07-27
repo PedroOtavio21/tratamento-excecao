@@ -1,3 +1,5 @@
+import java.util.List;
+
 public abstract class Obstaculo {
     // Atributos
     protected String id;
@@ -24,5 +26,5 @@ public abstract class Obstaculo {
     }
 
     // Metodo bater()
-    public abstract void bater(Robo robo, Tabuleiro tabuleiro1, Tabuleiro tabuleiro2);
+    public abstract void bater(Robo robo, Tabuleiro tabuleiro1, Tabuleiro tabuleiro2, List<Obstaculo> obstaculos);
 }

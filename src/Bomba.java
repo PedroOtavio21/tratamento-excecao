@@ -1,3 +1,5 @@
+import java.util.List;
+
 public class Bomba extends Obstaculo{
     private boolean explodiu;
     
@@ -16,10 +18,11 @@ public class Bomba extends Obstaculo{
     }
 
     @Override
-    public void bater(Robo robo, Tabuleiro tabuleiro1, Tabuleiro tabuleiro2) {
+    public void bater(Robo robo, Tabuleiro tabuleiro1, Tabuleiro tabuleiro2, List<Obstaculo> obstaculos) {
         if (robo.getX() == this.getCoordenadas()[0] && robo.getY() == this.getCoordenadas()[1]) {
             robo.setExplodiu(true);
             this.explodir();
+            obstaculos.remove(this);
             tabuleiro1.retirarObstaculo(this);
             tabuleiro2.retirarObstaculo(this);
             tabuleiro1.retirarRobo(robo);

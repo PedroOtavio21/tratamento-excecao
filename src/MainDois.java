@@ -8,7 +8,7 @@ public class MainDois {
         Scanner scanner = new Scanner(System.in);
         Random random = new Random();
 
-        Robo roboUm = new Robo("Azul");
+        Robo roboUm = new Robo("Branco");
         Robo roboDois = new Robo("Verde");
 
         Tabuleiro tabuleiro1 = new Tabuleiro();
@@ -24,7 +24,7 @@ public class MainDois {
                 System.out.println("Insira a posição do alimento, de acordo com a posição no eixo cartesiano (x,y)");
                 alimentoX = scanner.nextInt();
                 alimentoY = scanner.nextInt();
-                if (alimentoX < 0 || alimentoY < 0) {
+                if (alimentoX < 0 || alimentoY < 0 || alimentoX >= 4 || alimentoY >= 4) {
                     System.out.println("As coordenadas do alimento não podem ser menores que 0!");
                     scanner.nextLine();
                 } else {

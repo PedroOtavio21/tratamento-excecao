@@ -13,7 +13,6 @@ public class MainQuatro {
         int alimentoY = 0;
 
         List<Obstaculo> obstaculos = new ArrayList<>();
-        List<Bomba> bombasRemovidas = new ArrayList<>();
 
         int qntdBombas = 1;
         int bombaX = 0;
@@ -31,7 +30,7 @@ public class MainQuatro {
         Tabuleiro tabuleiro1 = new Tabuleiro();
         Tabuleiro tabuleiro2 = new Tabuleiro();
 
-        Robo roboNormal = new Robo("Azul");
+        Robo roboNormal = new Robo("Branco");
         Robo roboInteligente = new RoboInteligente("Verde");
 
         // Inserção de alimento no plano xy
@@ -103,7 +102,7 @@ public class MainQuatro {
             }
         }
 
-        // TODO: Implementar verificacao de roboPosicao == obstaculoPosicao
+        // TODO: Implementar verificacao de roboPosicao == obstaculoPosicao, aplicando lógica de bomba e rocha quando o robô os atingir
         if (inputValidoAlimento && inputValidoBomba && inputValidoRocha) {
             Alimento alimento = new Alimento(alimentoX, alimentoY);
             tabuleiro1.adicionarAlimento(alimento);
@@ -126,16 +125,12 @@ public class MainQuatro {
                         tabuleiro1.atualizarTabuleiro(roboNormal, "RN", alimento, obstaculos);
                         tabuleiro1.mostrarTabuleiroRotacionado();
 
-                        bombasRemovidas.clear();
                         for (Obstaculo o : obstaculos) {
-                            o.bater(roboNormal, tabuleiro1, tabuleiro2);
-                            if(o instanceof Bomba && roboNormal.isExplodiu()){
-                                bombasRemovidas.add((Bomba) o);
-                            }
+                            o.bater(roboNormal, tabuleiro1, tabuleiro2, obstaculos);
                         }
-                        obstaculos.removeAll(bombasRemovidas);
                     } catch (MovimentoInvalidoException e) {
                         System.out.println(e.getMessage());
+                        tabuleiro1.mostrarTabuleiroRotacionado();
                     }
 
                     if (roboNormal.encontrouAlimento(alimento)) {
@@ -157,16 +152,12 @@ public class MainQuatro {
                         tabuleiro2.atualizarTabuleiro(roboInteligente, "RI", alimento, obstaculos);
                         tabuleiro2.mostrarTabuleiroRotacionado();
                         
-                        bombasRemovidas.clear();
                         for (Obstaculo o : obstaculos) {
-                            o.bater(roboInteligente, tabuleiro2, tabuleiro1);
-                            if(o instanceof Bomba && roboNormal.isExplodiu()){
-                                bombasRemovidas.add((Bomba) o);
-                            }
+                            o.bater(roboInteligente, tabuleiro2, tabuleiro1, obstaculos);
                         }
-                        obstaculos.removeAll(bombasRemovidas);
                     } catch (MovimentoInvalidoException e) {
                         System.out.println(e.getMessage());
+                        tabuleiro2.mostrarTabuleiroRotacionado();
                     }
 
                     if (roboInteligente.encontrouAlimento(alimento)) {
