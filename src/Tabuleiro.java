@@ -1,3 +1,4 @@
+import java.util.List;
 public class Tabuleiro {
     private String[][] plano;
     private final int TAMANHO = 4;
@@ -5,6 +6,11 @@ public class Tabuleiro {
     public Tabuleiro() {
         this.plano = new String[TAMANHO][TAMANHO];
         inicializarTabuleiro();
+    }
+
+    // Metodo Getter
+    public int getTAMANHO(){
+        return this.TAMANHO;
     }
 
     // Inicializar visualização de tabuleiro
@@ -16,11 +22,21 @@ public class Tabuleiro {
         }
     }
 
-    // TODO: Implementar a visualização de Obstáculos em tabuleiro
+    // Metodo utilizado para atualizar a matriz plano[][]
     public void atualizarTabuleiro(Robo robo, String icone, Alimento alimento){
         inicializarTabuleiro();
         plano[robo.getX()][robo.getY()] = icone; 
         adicionarAlimento(alimento);
+    }
+
+    // Sobrecarga de metodo atualizarTabuleiro(), implementando visualizacao de obstaculos
+    public void atualizarTabuleiro(Robo robo, String icone, Alimento alimento, List<Obstaculo> obstaculos){
+        inicializarTabuleiro();
+        plano[robo.getX()][robo.getY()] = icone;
+        adicionarAlimento(alimento);
+        for(Obstaculo obstaculo : obstaculos){
+            adicionarObstaculo(obstaculo);
+        }
     }
 
     // Adicao de elementos no tabuleiro
@@ -50,6 +66,11 @@ public class Tabuleiro {
 
     public void retirarRobo(Robo robo){
         plano[robo.getX()][robo.getY()] = ".";
+    }
+
+    public void retirarObstaculo(Obstaculo obstaculo){
+        int []coordenadas = obstaculo.getCoordenadas();
+        plano[coordenadas[0]][coordenadas[1]] = ".";
     }
 
     // Visualização padrao de Tabuleiro -> Matriz
