@@ -8,6 +8,10 @@ public abstract class Obstaculo {
         this.id = x + "," + y; 
     }
 
+    public void setId(String id){
+        this.id = id;
+    }
+
     // Metodo Getter
     public String getId() {
         return id;
@@ -20,5 +24,5 @@ public abstract class Obstaculo {
     }
 
     // Metodo bater()
-    public abstract void bater(Robo robo, Tabuleiro tabuleiro);
+    public abstract void bater(Robo robo, Tabuleiro tabuleiro1, Tabuleiro tabuleiro2);
 }

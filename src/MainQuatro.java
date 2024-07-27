@@ -13,6 +13,7 @@ public class MainQuatro {
         int alimentoY = 0;
 
         List<Obstaculo> obstaculos = new ArrayList<>();
+        List<Bomba> bombasRemovidas = new ArrayList<>();
 
         int qntdBombas = 1;
         int bombaX = 0;
@@ -114,6 +115,7 @@ public class MainQuatro {
                 tabuleiro2.adicionarObstaculo(o);
             }
 
+            // Execução
             while (true) {
                 if (!roboNormal.encontrouAlimento(alimento) && !roboNormal.isExplodiu()) {
                     int valorRandom1 = random.nextInt(4) + 1;
@@ -121,12 +123,17 @@ public class MainQuatro {
 
                     try {
                         roboNormal.mover(direcao1);
-                        tabuleiro1.atualizarTabuleiro(roboNormal, "RN", alimento);
+                        tabuleiro1.atualizarTabuleiro(roboNormal, "RN", alimento, obstaculos);
                         tabuleiro1.mostrarTabuleiroRotacionado();
 
+                        bombasRemovidas.clear();
                         for (Obstaculo o : obstaculos) {
-                            o.bater(roboNormal, tabuleiro1);
+                            o.bater(roboNormal, tabuleiro1, tabuleiro2);
+                            if(o instanceof Bomba && roboNormal.isExplodiu()){
+                                bombasRemovidas.add((Bomba) o);
+                            }
                         }
+                        obstaculos.removeAll(bombasRemovidas);
                     } catch (MovimentoInvalidoException e) {
                         System.out.println(e.getMessage());
                     }
@@ -147,12 +154,17 @@ public class MainQuatro {
 
                     try {
                         roboInteligente.mover(direcao2);
-                        tabuleiro2.atualizarTabuleiro(roboInteligente, "RI", alimento);
+                        tabuleiro2.atualizarTabuleiro(roboInteligente, "RI", alimento, obstaculos);
                         tabuleiro2.mostrarTabuleiroRotacionado();
-
+                        
+                        bombasRemovidas.clear();
                         for (Obstaculo o : obstaculos) {
-                            o.bater(roboInteligente, tabuleiro2);
+                            o.bater(roboInteligente, tabuleiro2, tabuleiro1);
+                            if(o instanceof Bomba && roboNormal.isExplodiu()){
+                                bombasRemovidas.add((Bomba) o);
+                            }
                         }
+                        obstaculos.removeAll(bombasRemovidas);
                     } catch (MovimentoInvalidoException e) {
                         System.out.println(e.getMessage());
                     }
