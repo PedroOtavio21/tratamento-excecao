@@ -53,10 +53,11 @@ public class MainQuatro {
         }
         
         // Loop para inserção de bombas
-        if(qntdBombas <= 0 || qntdBombas > 2){
+        if(qntdBombas < 0 || qntdBombas >= 3){
             System.out.println("Não será possível inseir bombas no jogo.");
         } else {
             for (int i = 0; i < qntdBombas; i++) {
+                inputValidoBomba = false;
                 while (!inputValidoBomba) {
                     try {
                         System.out.println("Insira as coordenadas da bomba " + (i + 1));
@@ -65,6 +66,8 @@ public class MainQuatro {
                         if (bombaX < 0 || bombaX >= 4 || bombaY < 0 || bombaY >= 4) {
                             System.out.println("As coordenadas da bomba devem ser entre 0 e 3");
                             scanner.nextLine();
+                        } else if ((bombaX == alimentoX && bombaY == alimentoY) || isObstaculoExistente(obstaculos, bombaX, bombaY)){
+                            System.out.println("Esta posição já está ocupada por um obstáculo ou alimento.");
                         } else {
                             obstaculos.add(new Bomba(bombaX, bombaY));
                             inputValidoBomba = true;
@@ -78,10 +81,11 @@ public class MainQuatro {
         }
 
         // Loop para inserção de rochas
-        if(qntdRochas <= 0 || qntdRochas > 2){
+        if(qntdRochas < 0 || qntdRochas >= 3){
             System.out.println("Não será possível inseir rochas no jogo.");
         } else {
             for (int i = 0; i < qntdRochas; i++) {
+                inputValidoRocha = false;
                 while (!inputValidoRocha) {
                     try {
                         System.out.println("Insira as coordenadas da rocha " + (i + 1));
@@ -90,6 +94,8 @@ public class MainQuatro {
                         if (rochaX < 0 || rochaX >= 4 || rochaY < 0 || rochaY >= 4) {
                             System.out.println("As coordenadas da rocha devem ser entre 0 e 3");
                             scanner.nextLine();
+                        } else if ((rochaX == alimentoY && rochaY == alimentoY) || isObstaculoExistente(obstaculos, rochaX, rochaY)){
+                            System.out.println("Esta posição já está ocupada por um obstáculo ou alimento.");
                         } else {
                             obstaculos.add(new Rocha(rochaX, rochaY));
                             inputValidoRocha = true;
@@ -102,7 +108,6 @@ public class MainQuatro {
             }
         }
 
-        // TODO: Implementar verificacao de roboPosicao == obstaculoPosicao, aplicando lógica de bomba e rocha quando o robô os atingir
         if (inputValidoAlimento && inputValidoBomba && inputValidoRocha) {
             Alimento alimento = new Alimento(alimentoX, alimentoY);
             tabuleiro1.adicionarAlimento(alimento);
@@ -195,5 +200,14 @@ public class MainQuatro {
             System.out.println("Total de movimentos executados: " + totalMovimentosJogo);
         }  
         scanner.close();
+    }
+
+    public static boolean isObstaculoExistente(List<Obstaculo> obstaculos, int x, int y){
+        for(Obstaculo o : obstaculos){
+            if(o.getCoordenadas()[0] == x && o.getCoordenadas()[1] == y){
+                return true;
+            }
+        }
+        return false;
     }
 }
