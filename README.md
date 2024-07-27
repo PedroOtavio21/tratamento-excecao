@@ -104,11 +104,11 @@ mexendo.
 - [x] Implementar lógica de Exceção em MovimentoInvalidoException.
 - [x] Implementar lógica para classe filha RoboInteligente.
 - [x] Implementar lógica de visualização de movimentos, por meio de uma Matriz (Adicionar em classes Main).
-- [ ] Implementar lógica de classes Obstaculo, Bomba e Rocha.
+- [x] Implementar lógica de classes Obstaculo, Bomba e Rocha.
 - [x] Implementar o task 1.
 - [x] Implementar o task 2.
 - [x] Implementar o task 3.
-- [ ] Implementar o task 4.
+- [x] Implementar o task 4.
 - [ ] Realizar uma verificação de tratamento de erro ao decorrer do código.
 - [ ] Implementar interface gráfica (Swing ou JavaFX).
 
