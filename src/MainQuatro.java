@@ -119,7 +119,7 @@ public class MainQuatro {
                 tabuleiro2.adicionarObstaculo(o);
             }
 
-            // Execução
+            // Execução de movimentos dos Robôs
             while (true) {
                 if (!roboNormal.encontrouAlimento(alimento) && !roboNormal.isExplodiu()) {
                     int valorRandom1 = random.nextInt(4) + 1;
@@ -132,6 +132,12 @@ public class MainQuatro {
 
                         for (Obstaculo o : obstaculos) {
                             o.bater(roboNormal, tabuleiro1, tabuleiro2, obstaculos);
+                        }
+
+                        try {
+                            Thread.sleep(1000);
+                        } catch (InterruptedException e) {
+                            System.err.println("Thread interrompido: " + e.getMessage());
                         }
                     } catch (MovimentoInvalidoException e) {
                         System.out.println(e.getMessage());
@@ -160,6 +166,12 @@ public class MainQuatro {
                         for (Obstaculo o : obstaculos) {
                             o.bater(roboInteligente, tabuleiro2, tabuleiro1, obstaculos);
                         }
+
+                        try {
+                            Thread.sleep(1000);
+                        } catch (InterruptedException e) {
+                            System.err.println("Thread interrompido: " + e.getMessage());
+                        }
                     } catch (MovimentoInvalidoException e) {
                         System.out.println(e.getMessage());
                         tabuleiro2.mostrarTabuleiroRotacionado();
@@ -185,16 +197,16 @@ public class MainQuatro {
             // Resultado de execução
             int totalMovimentosJogo = (roboInteligente.getMovimentoValido() + roboInteligente.getMovimentoInvalido())
                     + (roboNormal.getMovimentoValido() + roboNormal.getMovimentoInvalido());
-            System.out.println("Movimentos Válidos de " + roboNormal.getCor() + ": " + roboNormal.getMovimentoValido());
-            System.out.println("Movimentos Inválidos de " + roboNormal.getCor() + ": " + roboNormal.getMovimentoInvalido());
-            System.out.println("Total de movimentos de " + roboNormal.getCor() + ": "
+            System.out.println("Movimentos Válidos de Robo Normal " + roboNormal.getCor() + ": " + roboNormal.getMovimentoValido());
+            System.out.println("Movimentos Inválidos de Robo Normal " + roboNormal.getCor() + ": " + roboNormal.getMovimentoInvalido());
+            System.out.println("Total de movimentos de Robo Normal " + roboNormal.getCor() + ": "
                     + (roboNormal.getMovimentoValido() + roboNormal.getMovimentoInvalido()));
             System.out.println();
-            System.out.println("Movimentos Válidos de " + roboInteligente.getCor() + ": "
+            System.out.println("Movimentos Válidos de Robo Inteligente " + roboInteligente.getCor() + ": "
                     + roboInteligente.getMovimentoValido());
-            System.out.println("Movimentos Inválidos de " + roboInteligente.getCor() + ": "
+            System.out.println("Movimentos Inválidos de Robo Inteligente " + roboInteligente.getCor() + ": "
                     + roboInteligente.getMovimentoInvalido());
-            System.out.println("Total de movimentos de " + roboInteligente.getCor() + ": "
+            System.out.println("Total de movimentos de Robo Inteligente " + roboInteligente.getCor() + ": "
                     + (roboInteligente.getMovimentoValido() + roboInteligente.getMovimentoInvalido()));
             System.out.println();
             System.out.println("Total de movimentos executados: " + totalMovimentosJogo);

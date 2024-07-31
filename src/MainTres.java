@@ -69,6 +69,12 @@ public class MainTres {
                     roboNormal.mover(direcao1);
                     tabuleiro1.atualizarTabuleiro(roboNormal, "RN", alimento);
                     tabuleiro1.mostrarTabuleiroRotacionado();
+
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        System.err.println("Thread interrompido: " + e.getMessage());
+                    }
                 } catch (MovimentoInvalidoException e) {
                     System.out.println(e.getMessage());
                     tabuleiro1.mostrarTabuleiroRotacionado();
@@ -79,6 +85,12 @@ public class MainTres {
                     roboInteligente.mover(direcao2);
                     tabuleiro2.atualizarTabuleiro(roboInteligente, "RI", alimento);
                     tabuleiro2.mostrarTabuleiroRotacionado();
+
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        System.err.println("Thread interrompido: " + e.getMessage());
+                    }
                 } catch (MovimentoInvalidoException e) {
                     System.out.println(e.getMessage());
                     tabuleiro2.mostrarTabuleiroRotacionado();

@@ -67,6 +67,12 @@ public class MainDois {
                     roboUm.mover(direcao1);
                     tabuleiro1.atualizarTabuleiro(roboUm, "R1", alimento);
                     tabuleiro1.mostrarTabuleiroRotacionado();
+
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        System.err.println("Thread interrompido: " + e.getMessage());
+                    }
                 } catch (MovimentoInvalidoException e) {
                     System.out.println(e.getMessage());
                     tabuleiro1.mostrarTabuleiroRotacionado();
@@ -76,6 +82,12 @@ public class MainDois {
                     roboDois.mover(direcao2);
                     tabuleiro2.atualizarTabuleiro(roboDois, "R2", alimento);
                     tabuleiro2.mostrarTabuleiroRotacionado();
+
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        System.err.println("Thread interrompido: " + e.getMessage());
+                    }
                 } catch (MovimentoInvalidoException e) {
                     System.out.println(e.getMessage());
                     tabuleiro2.mostrarTabuleiroRotacionado();

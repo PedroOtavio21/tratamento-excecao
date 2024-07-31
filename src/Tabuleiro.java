@@ -1,10 +1,10 @@
 import java.util.List;
 public class Tabuleiro {
-    private String[][] plano;
+    private String[][] tabuleiro;
     private final int TAMANHO = 4;
 
     public Tabuleiro() {
-        this.plano = new String[TAMANHO][TAMANHO];
+        this.tabuleiro = new String[TAMANHO][TAMANHO];
         inicializarTabuleiro();
     }
 
@@ -17,22 +17,22 @@ public class Tabuleiro {
     public void inicializarTabuleiro() {
         for (int i = 0; i < TAMANHO; i++) {
             for (int j = 0; j < TAMANHO; j++) {
-                plano[i][j] = ".";
+                tabuleiro[i][j] = ".";
             }
         }
     }
 
-    // Metodo utilizado para atualizar a matriz plano[][]
+    // Metodo utilizado para atualizar a matriz tabuleiro[][]
     public void atualizarTabuleiro(Robo robo, String icone, Alimento alimento){
         inicializarTabuleiro();
-        plano[robo.getX()][robo.getY()] = icone; 
+        tabuleiro[robo.getX()][robo.getY()] = icone; 
         adicionarAlimento(alimento);
     }
 
     // Sobrecarga de metodo atualizarTabuleiro(), implementando visualizacao de obstaculos
     public void atualizarTabuleiro(Robo robo, String icone, Alimento alimento, List<Obstaculo> obstaculos){
         inicializarTabuleiro();
-        plano[robo.getX()][robo.getY()] = icone;
+        tabuleiro[robo.getX()][robo.getY()] = icone;
         adicionarAlimento(alimento);
         for(Obstaculo obstaculo : obstaculos){
             adicionarObstaculo(obstaculo);
@@ -41,15 +41,15 @@ public class Tabuleiro {
 
     // Adicao de elementos no tabuleiro
     public void adicionarAlimento(Alimento alimento) {
-        plano[alimento.getX()][alimento.getY()] = "A";
+        tabuleiro[alimento.getX()][alimento.getY()] = "A";
     }
 
     public void adicionarAlimentoEncontrado(Alimento alimento){
-        plano[alimento.getX()][alimento.getY()] = "X";
+        tabuleiro[alimento.getX()][alimento.getY()] = "X";
     }
 
     public void adicionarRobo(Robo robo) {
-        plano[robo.getX()][robo.getY()] = "R";
+        tabuleiro[robo.getX()][robo.getY()] = "R";
     }
 
     public void adicionarObstaculo(Obstaculo obstaculo){
@@ -58,35 +58,35 @@ public class Tabuleiro {
         int y = coordenadas[1];
 
         if(obstaculo instanceof Bomba){
-            plano[x][y] = "B";
+            tabuleiro[x][y] = "B";
         } else if (obstaculo instanceof Rocha){
-            plano[x][y] = "R";
+            tabuleiro[x][y] = "R";
         }
     }
 
     public void retirarRobo(Robo robo){
-        plano[robo.getX()][robo.getY()] = ".";
+        tabuleiro[robo.getX()][robo.getY()] = ".";
     }
 
     public void retirarObstaculo(Obstaculo obstaculo){
         int []coordenadas = obstaculo.getCoordenadas();
-        plano[coordenadas[0]][coordenadas[1]] = ".";
+        tabuleiro[coordenadas[0]][coordenadas[1]] = ".";
     }
 
     // Visualização padrao de Tabuleiro -> Matriz
     public void mostrarTabuleiro() {
         for (int i = 0; i < TAMANHO; i++) {
             for (int j = 0; j < TAMANHO; j++) {
-                System.out.print(plano[i][j] + " ");
+                System.out.print(tabuleiro[i][j] + " ");
             }
             System.out.println();
         }
         System.out.println();
     }
 
-    // Visualizacao de Tabuleiro -> Plano xy
+    // Visualizacao de Tabuleiro -> tabuleiro xy
     public void mostrarTabuleiroRotacionado() {
-        String[][] rotacionado = rotacionarTabuleiro(plano);
+        String[][] rotacionado = rotacionarTabuleiro(tabuleiro);
 
         for (int i = 0; i < TAMANHO; i++) {
             for (int j = 0; j < TAMANHO; j++) {
@@ -97,6 +97,7 @@ public class Tabuleiro {
         System.out.println();
     }
 
+    // Função auxiliar de mostrarTabuleiroRotacionado()
     private String[][] rotacionarTabuleiro(String[][] matriz) {
         String[][] rotacionado = new String[TAMANHO][TAMANHO];
 

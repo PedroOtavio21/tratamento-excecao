@@ -4,7 +4,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
-// TODO: Implementar JAVAFX qnd preciso
+// TODO: Implementar JAVAFX quando preciso
 public class App extends Application {
     @Override
     public void start(Stage primaryStage) {
