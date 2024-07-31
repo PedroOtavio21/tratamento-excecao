@@ -1,4 +1,4 @@
-# jogo-tabuleiro-maven-npc
+# tratamento de exceção em java
 Projeto destinado à segunda nota de trabalho do npc1, pela disciplina de POO na Universidade Estadual do Ceará
 
 ## Equipe
