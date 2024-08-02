@@ -34,6 +34,7 @@ public class Tabuleiro {
         inicializarTabuleiro();
         tabuleiro[robo.getX()][robo.getY()] = icone;
         adicionarAlimento(alimento);
+        // TODO: Alterar a lógica de remoção de bombas e robôs caso ocorra uma explosão
         for(Obstaculo obstaculo : obstaculos){
             adicionarObstaculo(obstaculo);
         }

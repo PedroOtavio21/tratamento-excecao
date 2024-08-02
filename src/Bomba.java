@@ -17,6 +17,7 @@ public class Bomba extends Obstaculo{
         this.explodiu = true;
     }
 
+    // TODO: Necessário mudar lógica de negócio a partir de explosão de bomba
     @Override
     public void bater(Robo robo, Tabuleiro tabuleiro1, Tabuleiro tabuleiro2, List<Obstaculo> obstaculos) {
         if (robo.getX() == this.getCoordenadas()[0] && robo.getY() == this.getCoordenadas()[1]) {

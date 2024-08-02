@@ -22,6 +22,10 @@ O projeto foi distribuído nas seguintes classes:
 - Classes Main numeradas de 1 à 4 
 - App (Execução de possível Interface em JavaFX)
 
+Cada classe Main executa de uma maneira diferente, de acordo com o pedido de cada task fornecida (presente em "Descrição de Projeto"), sendo a primeira execução "manual" e as demais "aleatórias".
+
+A classe "App" serviu apenas para testes, pois a equipe não teve tempo o suficiente para utilizar uma interface gráfica em JAVAFX.
+
 ## Descrição do Projeto
 Segue abaixo o texto disponibilizado para a elaboração do projeto: 
 
@@ -98,7 +102,7 @@ mexendo.
 ### Desafio:
 - Use a interface gráfica (Swing ou JavaFX) para tornar seu jogo mais agradável!
 
-## Todo
+## TODO:
 - [x] Implementar classes base do jogo (Robô, MovimentoInvalido, "Alimento").
 - [x] Implementar lógica para robô (movimento inteiro, movimento string).
 - [x] Implementar lógica de Exceção em MovimentoInvalidoException.
@@ -110,6 +114,7 @@ mexendo.
 - [x] Implementar o task 3.
 - [x] Implementar o task 4.
 - [ ] Realizar uma verificação de tratamento de erro ao decorrer do código.
+- [ ] Alterar a lógica de negócio de remoção de bomba e robô do jogo.
 - [ ] Implementar interface gráfica (Swing ou JavaFX).
 
 ## Boas Práticas de Uso do Git para Colaboração
